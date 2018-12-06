@@ -25,6 +25,7 @@ public class ReadFile {
     }
 
     public static int readLines() throws IOException{
+        long t1 = System.currentTimeMillis();
         FileReader file_to_read = new FileReader(path);
         BufferedReader bf = new BufferedReader(file_to_read);
 
@@ -34,7 +35,9 @@ public class ReadFile {
             numberOfLines++;
         }
         bf.close();
-
+        long t2 = System.currentTimeMillis();
+        System.out.println(t2 - t1);
         return numberOfLines;
+
     }
 }
