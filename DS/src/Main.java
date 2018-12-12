@@ -1,4 +1,4 @@
-import com.sun.org.apache.regexp.internal.RE;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,7 +118,7 @@ public class Main {
         else if (la == 1){
             int result = JOptionPane.showOptionDialog(
                     null,
-                    "آیا می خواهید برنامه فایل را بخواند؟ \n برای شروع کلیلک کنید.",
+                    "آیا می خواهید برنامه فایل را بخواند؟ \n برای شروع کلیک کنید.",
                     "خواندن فایل",
                     0,
                     JOptionPane.QUESTION_MESSAGE,
