@@ -1,27 +1,226 @@
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
-        Trie My=new Trie();
-        My.ReadFile("C:\\Users\\Ali Asadi\\Desktop\\DS\\DS\\src\\test.txt");
-        My.Insert("amazing");
-        My.Insert("amazon");
-        My.Insert("amazer");
-        My.Insert("amazeb");
-        My.Find("sal");
-        System.out.println(My.list);
+        Trie My = new Trie();
+        boolean T = true;
+        boolean R = true;
+        int result1 = 0;
+        int la = JOptionPane.showOptionDialog(
+                null,
+                "",
+                "Menu",
+                0,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new String[]{"English", "فارسی"},
+                null);
+        if(la == 0){
+            int result = JOptionPane.showOptionDialog(
+                    null,
+                    "Do you want read file?",
+                    "Read File",
+                    0,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new String[]{"Start", "Exit"},
+                    "Start");
+            if (result == 1){
+                T = false;
+            }if (result == -1){
+                T = false;
+            }
+            if (result == 0){
+                if (result == -1){
+                    T = false;
+                }
+                if (result == 0) {
+//                  C:\\Users\\Ali Asadi\\Desktop\\DS\\DS\\src\\test.txt
+                    String Re = JOptionPane.showInputDialog(null, "Please enter path file", "Path File", JOptionPane.QUESTION_MESSAGE);
+                    if (Re == null){
+                        T = false;
+                    }
+                    else {
+                        long t1 = System.nanoTime();
+                        My.ReadFile(Re);
+                        long t2 = System.nanoTime();
+                        int res = JOptionPane.showOptionDialog(
+                                null,
+                                "Time of read file: \n" + (t2 - t1),
+                                "Time of read file",
+                                0,
+                                JOptionPane.INFORMATION_MESSAGE,
+                                null,
+                                new String[] {"Show Option" , "Exit"},
+                                "Show Option");
+                        if (res == 1 || res == -1){
+                            T = false;
+                        }
+                    }
+                }
+            }
+            while ( T ) {
+                result1 = JOptionPane.showOptionDialog(
+                        null,
+                        "What do you want?",
+                        "Menu",
+                        0,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new String[]{"Search", "Add", "Remove", "Exit"},
+                        "Search");
+                if (result1 == -1){
+                    break;
+                }
+                if (result1 == 0) {
+                    long t223 = System.nanoTime();
+                    My.Find(JOptionPane.showInputDialog(null, "Please enter your word", "Search", JOptionPane.QUESTION_MESSAGE));
+                    long t224 = System.nanoTime();
+                    int B = JOptionPane.showOptionDialog(
+                            null,
+                            My.list + "\n" + "Time of find word" + "\n" + (t224 - t223),
+                            "Result Search",
+                            0,
+                            JOptionPane.INFORMATION_MESSAGE,
+                            null,
+                            new String[] {"Back", "Exit"},
+                            "Back");
+                    My.list.clear();
+                    if (B == 1){
+                        T = false;
+                    }
+                }
+                else if (result1 == 1){
+                    String w =JOptionPane.showInputDialog(
+                            null,
+                            "Please enter your word",
+                            "Add Word",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    if (w == null){
+                        break;
+                    }
+                    My.Insert(w);
+
+                }
+                else if (result1 == 2){
+
+                }
+                else if (result1 == 3){
+                    T = false;
+                }
+            }
+        }
+        else if (la == 1){
+            int result = JOptionPane.showOptionDialog(
+                    null,
+                    "آیا می خواهید برنامه فایل را بخواند؟ \n برای شروع کلیلک کنید.",
+                    "خواندن فایل",
+                    0,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new String[]{"شروع", "خروج"},
+                    "شروع");
+            if (result == 1){
+                T = false;
+            }if (result == -1){
+                T = false;
+            }
+            if (result == 0){
+                if (result == -1){
+                    T = false;
+                }
+                if (result == 0) {
+//                  c
+                    String Re = JOptionPane.showInputDialog(null, "لطفا مسیر فایل مورد نظر خود را وارد کنید", "مسیر فایل", JOptionPane.QUESTION_MESSAGE);
+                    if (Re == null){
+                        T = false;
+                    }
+                    else {
+                        long t1 = System.nanoTime();
+                        My.ReadFile(Re);
+                        long t2 = System.nanoTime();
+                        int res = JOptionPane.showOptionDialog(
+                                null,
+                                "مدت زمان خواندن فایل: \n" + (t2 - t1),
+                                "مدت زمان خواندن فایل",
+                                0,
+                                JOptionPane.INFORMATION_MESSAGE,
+                                null,
+                                new String[] {"نمایش گزینه های برنامه" , "خروج"},
+                                "نمایش گزینه های برنامه");
+                        if (res == 1 || res == -1){
+                            T = false;
+                        }
+                    }
+                }
+            }
+            while ( T ) {
+                result1 = JOptionPane.showOptionDialog(
+                        null,
+                        "عملیات مورد نظر خود را انتخاب کنید.",
+                        "منو",
+                        0,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new String[]{"جست و جو", "اضافه کردن", "حذف کردن", "خروج"},
+                        "جست و جو");
+                if (result1 == -1){
+                    break;
+                }
+                if (result1 == 0) {
+                    String A = JOptionPane.showInputDialog(null, "لطقا کلمه مورد نظر خود را وارد کنید.", "جست و جو", JOptionPane.QUESTION_MESSAGE);
+                    long t1 = System.nanoTime();
+                    My.Find(A);
+                    long t2 = System.nanoTime();
+                    int B = JOptionPane.showOptionDialog(
+                            null,
+                            My.list + "\n" + "مدت زمان پیدا کردن کلمه" + "\n" + (t2 - t1),
+                            "نتایج جست و جو",
+                            0,
+                            JOptionPane.INFORMATION_MESSAGE,
+                            null,
+                            new String[] {"برگشت", "خروج"},
+                            "برگشت");
+                    My.list.clear();
+                    if (B == 1){
+                        T = false;
+                    }
+                }
+                else if (result1 == 1){
+                    String w =JOptionPane.showInputDialog(
+                            null,
+                            "لطفا کلمه مورد نظر خود را وارد کنید",
+                            "افزودن کلمه",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    if (w == null){
+                        break;
+                    }
+                    My.Insert(w);
+
+                }
+                else if (result1 == 2){
+
+                }
+                else if (result1 == 3){
+                    T = false;
+                }
+            }
+        }
     }
 }
+
 class Node{
     int AscciChar;
     BST BstChild;
-    // boolean UpperCase;
-    // boolean LowerCase;
-    //boolean EndUpper;
-    //boolean EndLower;
+    boolean UpperCase;
+    boolean LowerCase;
+    boolean EndUpper;
+//    boolean EndLower;
     boolean End;
     Node LeftChild;
     Node RightChild;
