@@ -1,49 +1,147 @@
-import sun.misc.Cache;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.lang.ref.SoftReference;
+import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
-//        Node t1=new Node(22);
-//        Node t2=new Node(23);
-//        SoftReference<Node> softRef = new SoftReference<Node>(t1);
-//        t1=t2;
-//        t1=null;
-//        t2=null;
-//        softRef = new SoftReference<Node>(t1);
-//        System.gc();
-//        System.out.println(softRef.get().AscciChar);
-        try {
-        Trie My=new Trie();
-        long t1=System.currentTimeMillis();
-        My.ReadFile("C:\\Users\\DS_Project100.txt");
-        long t2=System.currentTimeMillis();
-        System.out.println(t2-t1);
-        long t12=System.nanoTime();
-        My.Find("am");
-        long t22=System.nanoTime();
-        System.out.println(t22-t12);
-        My.Remove("amazeb");
-        My.Find("amaz");
-        System.out.println(My.list);
-        }
-        catch (Exception e){
-        }
+        Trie My = new Trie();
+        boolean T = true;
+        boolean R = true;
+        int result1 = 0;
+        int la = JOptionPane.showOptionDialog(
+                null,
+                "",
+                "Menu",
+                0,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new String[]{"English"},
+                null);
+        if (la == 0) {
+            int result = JOptionPane.showOptionDialog(
+                    null,
+                    "Do you want read file?",
+                    "Read File",
+                    0,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new String[]{"Start", "Exit"},
+                    "Start");
+            if (result == 1) {
+                T = false;
+            }
+            if (result == -1) {
+                T = false;
+            }
+            if (result == 0) {
+                if (result == -1) {
+                    T = false;
+                }
+                if (result == 0) {
+//                  C:\\Users\\Ali Asadi\\Desktop\\DS\\DS\\src\\test.txt
+                    String Re = JOptionPane.showInputDialog(null, "Please enter path file", "Path File", JOptionPane.QUESTION_MESSAGE);
+                    if (Re == null) {
+                        T = false;
+                    } else {
+                        long t1 = System.nanoTime();
+                        My.ReadFile(Re);
+                        long t2 = System.nanoTime();
+                        int res = JOptionPane.showOptionDialog(
+                                null,
+                                "Time of read file: \n" + (t2 - t1),
+                                "Time of read file",
+                                0,
+                                JOptionPane.INFORMATION_MESSAGE,
+                                null,
+                                new String[]{"Show Option", "Exit"},
+                                "Show Option");
+                        if (res == 1 || res == -1) {
+                            T = false;
+                        }
+                    }
+                }
+            }
+            while (T) {
+                result1 = JOptionPane.showOptionDialog(
+                        null,
+                        "What do you want?",
+                        "Menu",
+                        0,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new String[]{"Search", "Add", "Remove", "Exit"},
+                        "Search");
+                if (result1 == -1) {
+                    break;
+                }
+                if (result1 == 0) {
+                    String Se = JOptionPane.showInputDialog(null, "Please enter your word", "Search", JOptionPane.QUESTION_MESSAGE);
+                    long t223 = System.nanoTime();
+                    My.Find(Se);
+                    long t224 = System.nanoTime();
+                    String lisst = new String();
+                    for (int i=0; i<My.list.size() ;i++){
+                        lisst += My.list.get(i)+ "\n";
 
+                    }
+
+                    int B = JOptionPane.showOptionDialog(
+                            null,
+
+                             lisst + "\n" + "Time of find word" + "\n" + (t224 - t223),
+                            "Result Search",
+                            0,
+                            JOptionPane.INFORMATION_MESSAGE,
+                            null,
+                            new String[]{"Back", "Exit"},
+                            "Back");
+                    My.list.clear();
+                    lisst=null;
+                    if (B == 1) {
+                        T = false;
+                    }
+                } else if (result1 == 1) {
+                    String w = JOptionPane.showInputDialog(
+                            null,
+                            "Please enter your word",
+                            "Add Word",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    if (w == null) {
+                        break;
+                    }
+                    String[] Line = w.split(" ");
+                    if (Line[0].equals("function")) {
+                        String ArrayType = "";
+                        ArrayType += "(F ";
+                        ArrayType += Line[1] + ",";
+                        ArrayType += Line[3] + ")";
+                        My.Insert(Line[2], ArrayType);
+                    } else {
+                        String ArrayType = "(V ";
+                        ArrayType += Line[1] + ")";
+                        My.Insert(Line[2], ArrayType);
+                    }
+                } else if (result1 == 2) {
+
+                } else if (result1 == 3) {
+                    T = false;
+                }
+            }
+
+        }
     }
+
 }
+
 class Node{
     int AscciChar;
     BST BstChild;
-    //ArrayList Type;
-   //boolean UpperCase;
-   //boolean LowerCase;
-   //boolean EndUpper;
-   //boolean EndLower;
+    String Type;
+    //boolean UpperCase;
+    //boolean LowerCase;
+    //boolean EndUpper;
+    //boolean EndLower;
     boolean End;
     Node LeftChild;
     Node RightChild;
@@ -53,117 +151,81 @@ class Node{
         this.BstChild=new BST();
     }
 }
-class BST{
+class BST {
     Node Root;
-    BST(){
-        this.Root=null;
+
+    BST() {
+        this.Root = null;
     }
-    public void Add(Node NewNode){
-        if(this.Root==null){
-            this.Root=NewNode;
+    public void Add(Node NewNode) {
+        if (this.Root == null) {
+            this.Root = NewNode;
             return;
         }
-        Node parent=null;
-        Node q=this.Root;
-//        SoftReference<Node> softrefq= new SoftReference<Node>(q);
-//        SoftReference<Node> softrefparent= new SoftReference<Node>(parent);
-        while (true){
-            parent=q;
-            //softrefparent=new SoftReference<Node>(parent);
-            if(NewNode.AscciChar<q.AscciChar){
-                q=q.LeftChild;
-                //softrefq=new SoftReference<Node>(q);
-                if(q==null){
-                    parent.LeftChild=NewNode;
-                    q=null;
-                    parent=null;
+        Node parent;
+        Node q = this.Root;
+        while (true) {
+            parent = q;
+            if (NewNode.AscciChar < q.AscciChar) {
+                q = q.LeftChild;
+                if (q == null) {
+                    parent.LeftChild = NewNode;
                     return;
                 }
-            }
-            else if(NewNode.AscciChar>q.AscciChar){
-                q=q.RightChild;
-                //softrefq=new SoftReference<Node>(q);
-                if(q==null){
-                    parent.RightChild=NewNode;
-                    q=null;
-                    parent=null;
+            } else if (NewNode.AscciChar > q.AscciChar) {
+                q = q.RightChild;
+                if (q == null) {
+                    parent.RightChild = NewNode;
                     return;
                 }
-            }
-            else{
-                q=null;
-                parent=null;
+            } else {
                 break;
             }
         }
     }
-    public Node Search(int Key){
-        if(this.Root==null){
+
+    public Node Search(int Key) {
+        if (this.Root == null) {
             return null;
         }
-        Node q=this.Root;
-        //SoftReference<Node> softrefq= new SoftReference<Node>(q);
-        while (q!=null){
-            if(Key>q.AscciChar){
-                q=q.RightChild;
-                //softrefq= new SoftReference<Node>(q);
-            }
-            else if(Key< q.AscciChar){
-                q=q.LeftChild;
-                //softrefq= new SoftReference<Node>(q);
-            }
-            else {
-                q=null;
+        Node q = this.Root;
+        while (q != null) {
+            if (Key > q.AscciChar) {
+                q = q.RightChild;
+            } else if (Key < q.AscciChar) {
+                q = q.LeftChild;
+            } else {
                 return q;
             }
         }
         return null;
     }
-//    public void Inorder(Node v){
-//        if(v.LeftChild!=null){
-//            Inorder(v.LeftChild);
-//        }
-//        System.out.print(v.AscciChar+" ");
-//        if(v.RightChild!=null){
-//            Inorder(v.RightChild);
-//        }
-//    }
 }
 class Trie{
     List list=new ArrayList();
     BST TrieBST=new BST();
     public void ReadFile(String path){
-        int c=0;
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader(path));
-            String line=null;
-            String[] Line=null;
-            //SoftReference softline=new SoftReference(line);
-            //SoftReference softLine=new SoftReference(Line);
+            String line;
+            String[] Line;
             while ((line = reader.readLine()) != null)
             {
-                c+=1;
-                //softline=new SoftReference(line);
                 Line=line.split(" ");
-                //softLine=new SoftReference(Line);
-                if(Line[0]=="function"){
-//                    ArrayList ArrayType=new ArrayList();
-//                    ArrayType.add(Line[0]);
-//                    ArrayType.add(Line[1]);
-//                    ArrayType.add(Line[3]);
-                    this.Insert(Line[2]);
+                if(Line[0].equals("function")){
+                    String ArrayType="";
+                    ArrayType+="(F ";
+                    ArrayType+=Line[1]+",";
+                    ArrayType+=Line[3]+")";
+                    this.Insert(Line[2],ArrayType);
                 }
                 else {
-//                    ArrayList ArrayType=new ArrayList();
-//                    ArrayType.add(Line[0]);
-//                    ArrayType.add(Line[1]);
-                      this.Insert(Line[2]);
+                    String ArrayType="(V ";
+                    ArrayType+=Line[1]+")";
+                    this.Insert(Line[2],ArrayType);
                 }
-                System.out.println(c);
             }
-            Line=null;
-            line=null;
             reader.close();
         }
         catch (Exception e)
@@ -172,58 +234,45 @@ class Trie{
             e.printStackTrace();
         }
     }
-    public void Insert(String Word){
+    public void Insert(String Word,String ArrayType){
         Node FocusNode=this.TrieBST.Search((int) Word.charAt(0));
-        //SoftReference softFocuseNode=new SoftReference(FocusNode);
         if(FocusNode==null) {
             FocusNode=new Node((int) Word.charAt(0));
-            //softFocuseNode=new SoftReference(FocusNode);
             TrieBST.Add(FocusNode);
         }
         BST FocusBST=FocusNode.BstChild;
-        //SoftReference softFocuseBST=new SoftReference(FocusBST);
         for(int i=1;i<Word.length();i++){
             FocusNode=FocusBST.Search((int) Word.charAt(i));
-            //softFocuseNode=new SoftReference(FocusNode);
             if(FocusNode==null){
                 FocusNode=new Node((int) Word.charAt(i));
-                //softFocuseNode=new SoftReference(FocusNode);
                 FocusBST.Add(FocusNode);
             }
             FocusBST=FocusNode.BstChild;
-            //softFocuseBST=new SoftReference(FocusBST);
         }
-        FocusBST=null;
         FocusNode.End=true;
-        //FocusNode.Type=ArrayType;
-        FocusNode=null;
+        FocusNode.Type=ArrayType;
     }
     public void Find(String Word){
         Node FocusNode=this.TrieBST.Search((int) Word.charAt(0));
-        //SoftReference softFocuseNode=new SoftReference(FocusNode);
         if(FocusNode==null){
             return;
         }
         FocusNode=this.Move(FocusNode,Word);
-        //softFocuseNode=new SoftReference(FocusNode);
         if(FocusNode!=null) {
             if (FocusNode.End) {
                 this.list.add(Word);
             }
             FocusNode = FocusNode.BstChild.Root;
-            //softFocuseNode=new SoftReference(FocusNode);
             if (FocusNode != null) {
                 this.PreOrder(FocusNode, Word);
             }
         }
-        FocusNode=null;
     }
     public void PreOrder(Node q,String Word){
         if(q.End){
-            this.list.add(Word+(char) q.AscciChar);
+            this.list.add(Word+(char) q.AscciChar+" "+q.Type);
         }
         Node Child=q.BstChild.Root;
-        //SoftReference softFocuseNode=new SoftReference(Child);
         if(Child!=null){
             this.PreOrder(Child,Word+(char) q.AscciChar);
             Child=null;
@@ -237,31 +286,23 @@ class Trie{
     }
     public void Remove(String Word){
         Node FocusNode=this.TrieBST.Search((int) Word.charAt(0));
-        //SoftReference softFocuseNode=new SoftReference(FocusNode);
         if(FocusNode==null){
             return;
         }
         FocusNode=this.Move(FocusNode,Word);
-        //softFocuseNode=new SoftReference(FocusNode);
         if(FocusNode!=null) {
             FocusNode.End = false;
         }
-        FocusNode=null;
     }
     public Node Move(Node FocusNode,String Word){
         BST FocusBST=FocusNode.BstChild;
-       // SoftReference softFocuseBST=new SoftReference(FocusBST);
-        //SoftReference softFocuseNode=new SoftReference(FocusNode);
         for(int i=1;i<Word.length();i++){
             FocusNode=FocusBST.Search((int) Word.charAt(i));
-            //softFocuseNode=new SoftReference(FocusNode);
             if(FocusNode==null){
                 return null;
             }
             FocusBST=FocusNode.BstChild;
-           // softFocuseBST=new SoftReference(FocusBST);
         }
-        FocusBST=null;
         return FocusNode;
     }
 }
