@@ -16,14 +16,18 @@
     <session id="-175638238">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.117" value="1" />
+          <entry key="project.open.time.137" value="1" />
+          <entry key="project.open.time.152" value="1" />
+          <entry key="project.open.time.178" value="1" />
           <entry key="project.open.time.210" value="1" />
           <entry key="project.open.time.260" value="1" />
           <entry key="project.open.time.291" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.74" value="2" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.81" value="1" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -40,13 +44,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3801" />
+          <entry key="java" value="3947" />
           <entry key="txt" value="136" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3801" />
+          <entry key="JAVA" value="3947" />
           <entry key="PLAIN_TEXT" value="136" />
         </counts>
       </usages-collector>
@@ -65,10 +69,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="120" column="67" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="67" />
+            <state relative-caret-position="2091">
+              <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5407#5408#0" expanded="true" />
+                <element signature="e#5439#5440#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Downloads/Telegram Desktop/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="153">
               <caret line="13" column="20" selection-end-line="171" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -89,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReadFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="49" />
+            <state relative-caret-position="102">
+              <caret line="11" column="49" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,7 +107,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test.txt">
           <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="365">
+            <state relative-caret-position="2806683">
               <caret line="165099" column="3" selection-start-line="165099" selection-start-column="3" selection-end-line="165099" selection-end-column="3" />
             </state>
           </provider>
@@ -152,6 +158,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,13 +176,12 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544632062159" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545053189071" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -221,7 +227,11 @@
       <workItem from="1544262775416" duration="4084000" />
       <workItem from="1544333460416" duration="2219000" />
       <workItem from="1544439344040" duration="4315000" />
-      <workItem from="1544475694421" duration="21976000" />
+      <workItem from="1544475694421" duration="22637000" />
+      <workItem from="1544864156336" duration="1123000" />
+      <workItem from="1544959509238" duration="547000" />
+      <workItem from="1545052597633" duration="840000" />
+      <workItem from="1545164595863" duration="1578000" />
     </task>
     <task id="LOCAL-00001" summary="1 commit">
       <created>1543569072976</created>
@@ -272,17 +282,24 @@
       <option name="project" value="LOCAL" />
       <updated>1544631604057</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="2 commit">
+      <created>1544632625494</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1544632625494</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50857000" />
+    <option name="totallyTimeSpent" value="55606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49691358" visible="true" weight="0.09909228" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49691358" visible="true" weight="0.10514372" />
       <window_info id="Structure" order="1" sideWeight="0.50308645" side_tool="true" weight="0.15515289" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -291,7 +308,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.50308645" side_tool="true" weight="0.15515289" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26065573" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26065573" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39836067" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -327,12 +344,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>420</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ReadFile.java</url>
           <line>27</line>
           <properties />
@@ -361,31 +372,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.txt">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="2304000" lean-forward="true" selection-start-line="2304000" selection-end-line="2304000" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="365">
-          <caret line="165099" column="3" selection-start-line="165099" selection-start-column="3" selection-end-line="165099" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReadFile.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="49" />
+        <state relative-caret-position="2091">
+          <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5407#5408#0" expanded="true" />
+            <element signature="e#5439#5440#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/Telegram Desktop/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="153">
           <caret line="13" column="20" selection-end-line="171" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -393,13 +394,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/ReadFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="120" column="67" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="67" />
+          <caret line="11" column="49" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.txt">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="2304000" lean-forward="true" selection-start-line="2304000" selection-end-line="2304000" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="2806683">
+          <caret line="165099" column="3" selection-start-line="165099" selection-start-column="3" selection-end-line="165099" selection-end-column="3" />
         </state>
       </provider>
     </entry>
