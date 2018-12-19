@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileReader;
@@ -5,135 +6,152 @@ import java.io.BufferedReader;
 import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
-        JTextArea textarea = null;
-        JScrollPane myjspane = null;
+//        String s ="";
+//        JScrollPane scrollPane = new JScrollPane(new JLabel(s));
+//        scrollPane.setPreferredSize(new Dimension(200,100));
+//        Object message = scrollPane;
+//        JTextArea textArea = new JTextArea(s);
+//        textArea.setLineWrap(true);
+//        textArea.setWrapStyleWord(true);
+//        textArea.setMargin(new Insets(5,5,5,5));
+//        scrollPane.getViewport().setView(textArea);
+//        message = scrollPane;
         Trie My = new Trie();
         boolean T = true;
         boolean R = true;
         int result1 = 0;
-        int la = JOptionPane.showOptionDialog(
+
+        int result = JOptionPane.showOptionDialog(
                 null,
-                "",
-                "Menu",
+                "Do you want read file?",
+                "Read File",
                 0,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
-                new String[]{"English"},
-                null);
-        if (la == 0) {
-            int result = JOptionPane.showOptionDialog(
-                    null,
-                    "Do you want read file?",
-                    "Read File",
-                    0,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    new String[]{"Start", "Exit"},
-                    "Start");
-            if (result == 1) {
-                T = false;
-            }
+                new String[]{"Start", "Exit"},
+                "Start");
+        if (result == 1) {
+            T = false;
+        }
+        if (result == -1) {
+            T = false;
+        }
+        if (result == 0) {
             if (result == -1) {
                 T = false;
             }
             if (result == 0) {
-                if (result == -1) {
-                    T = false;
-                }
-                if (result == 0) {
 //                  C:\\Users\\Ali Asadi\\Desktop\\DS\\DS\\src\\test.txt
-                    //C:\\Users\\Ali Asadi\\Desktop\\DS\\DS\\src\\DS_Project.txt
-                    String Re = JOptionPane.showInputDialog(null, "Please enter path file", "Path File", JOptionPane.QUESTION_MESSAGE);
-                    if (Re == null) {
-                        T = false;
-                    } else {
-                        long t1 = System.nanoTime();
-                        My.ReadFile(Re);
-                        long t2 = System.nanoTime();
-                        int res = JOptionPane.showOptionDialog(
-                                null,
-                                "Time of read file: \n" + (t2 - t1),
-                                "Time of read file",
-                                0,
-                                JOptionPane.INFORMATION_MESSAGE,
-                                null,
-                                new String[]{"Show Option", "Exit"},
-                                "Show Option");
-                        if (res == 1 || res == -1) {
-                            T = false;
-                        }
-                    }
-                }
-            }
-            while (T) {
-                result1 = JOptionPane.showOptionDialog(
-                        null,
-                        "What do you want?",
-                        "Menu",
-                        0,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        new String[]{"Search", "Add", "Remove", "Exit"},
-                        "Search");
-                if (result1 == -1) {
-                    break;
-                }
-                if (result1 == 0) {
-                    String Se = JOptionPane.showInputDialog(null, "Please enter your word", "Search", JOptionPane.QUESTION_MESSAGE);
-                    long t223 = System.nanoTime();
-                    My.Find(Se);
-                    long t224 = System.nanoTime();
-                    String lisst = new String();
-                    for (int i=0; i<My.list.size() ;i++){
-                        lisst += My.list.get(i)+ "\n";
-
-                    }
-
-
-
-                    myjspane = new JScrollPane(textarea);
-                    int B = JOptionPane.showOptionDialog(
+                //C:\\Users\\Ali Asadi\\Desktop\\DS\\DS\\src\\DS_Project.txt
+                String Re = JOptionPane.showInputDialog(null, "Please enter path file", "Path File", JOptionPane.QUESTION_MESSAGE);
+                if (Re == null) {
+                    T = false;
+                } else {
+                    long t1 = System.nanoTime();
+                    My.ReadFile(Re);
+                    long t2 = System.nanoTime();
+                    int res = JOptionPane.showOptionDialog(
                             null,
-                            lisst + "\n" + "Time of find word" + "\n" + (t224 - t223),
-                            "Result Search",
+                            "Time of read file: \n" + (t2 - t1),
+                            "Time of read file",
                             0,
                             JOptionPane.INFORMATION_MESSAGE,
                             null,
-                            new String[]{"Back", "Exit"},
-                            "Back");
-                    My.list.clear();
-                    lisst=null;
-                    if (B == 1) {
+                            new String[]{"Show Option", "Exit"},
+                            "Show Option");
+                    if (res == 1 || res == -1) {
                         T = false;
                     }
-                } else if (result1 == 1) {
-                    String w = JOptionPane.showInputDialog(
-                            null,
-                            "Please enter your word",
-                            "Add Word",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    if (w == null) {
-                        break;
-                    }
-                    String[] Line = w.split(" ");
-                    if (Line[0].equals("function")) {
-                        String ArrayType = "";
-                        ArrayType += "(F ";
-                        ArrayType += Line[1] + ",";
-                        ArrayType += Line[3] + ")";
-                        My.Insert(Line[2], ArrayType);
-                    } else {
-                        String ArrayType = "(V ";
-                        ArrayType += Line[1] + ")";
-                        My.Insert(Line[2], ArrayType);
-                    }
                 }
-                else if (result1 == 2) {
+            }
+        }
+        while (T) {
+            result1 = JOptionPane.showOptionDialog(
+                    null,
+                    "What do you want?",
+                    "Menu",
+                    0,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    new String[]{"Search", "Add", "Remove", "Exit"},
+                    "Search");
+            if (result1 == -1) {
+                break;
+            }
+            if (result1 == 0) {
+                String Se = JOptionPane.showInputDialog(null, "Please enter your word", "Search", JOptionPane.QUESTION_MESSAGE);
+                long t223 = System.nanoTime();
+                My.Find(Se);
+                long t224 = System.nanoTime();
+                String lisst = new String();
+                lisst = "Time:";
+                lisst += t224 - t223;
+                lisst += "\n";
+                for (int i=0; i<My.list.size() ;i++){
+                    lisst += My.list.get(i)+ "\n";
+                }
 
+
+
+
+                String s = lisst;
+                JScrollPane scrollPane = new JScrollPane(new JLabel(s));
+                scrollPane.setPreferredSize(new Dimension(300,200));
+                Object message = scrollPane;
+                JTextArea textArea = new JTextArea(s);
+                textArea.setLineWrap(true);
+                textArea.setWrapStyleWord(true);
+                ;
+//                    textArea.setMargin(new Insets(50,50,50,50));
+                scrollPane.getViewport().setView(textArea);
+                message = scrollPane;
+                int d = (int) JOptionPane.showConfirmDialog(
+                    null,
+                    message /*+ "\n" + "Time of find word" + "\n" + (t224 - t223)*/,
+                    "Result Search",
+                    JOptionPane.OK_OPTION);
+
+                My.list.clear();
+                lisst=null;
+                if (d == 1){
+                    break;
                 }
-                else if (result1 == 3) {
-                    T = false;
+            } else if (result1 == 1) {
+                String w = JOptionPane.showInputDialog(
+                        null,
+                        "Please enter your word",
+                        "Add Word",
+                        JOptionPane.INFORMATION_MESSAGE);
+                if (w == null) {
+                    break;
                 }
+                String[] Line = w.split(" ");
+                if (Line[0].equals("function")) {
+                    String ArrayType = "";
+                    ArrayType += "(F ";
+                    ArrayType += Line[1] + ",";
+                    ArrayType += Line[3] + ")";
+                    My.Insert(Line[2], ArrayType);
+                } else {
+                    String ArrayType = "(V ";
+                    ArrayType += Line[1] + ")";
+                    My.Insert(Line[2], ArrayType);
+                }
+            }
+            else if (result1 == 2) {
+
+                String Se = JOptionPane.showInputDialog(null, "Please enter your word", "Search", JOptionPane.QUESTION_MESSAGE);
+                long t223 = System.nanoTime();
+                My.Remove(Se);
+                long t224 = System.nanoTime();
+                String w = JOptionPane.showInputDialog(
+                        null,
+                        "Time" + (t224 - t223),
+                        "",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+            else if (result1 == 3) {
+                T = false;
             }
         }
     }
@@ -265,7 +283,7 @@ class Trie{
         FocusNode=this.Move(FocusNode,Word);
         if(FocusNode!=null) {
             if (FocusNode.End) {
-                this.list.add(Word);
+                this.list.add(Word+" "+FocusNode.Type);
             }
             FocusNode = FocusNode.BstChild.Root;
             if (FocusNode != null) {
