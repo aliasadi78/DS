@@ -1,11 +1,12 @@
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import javax.swing.*;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        String s ="";
 //        JScrollPane scrollPane = new JScrollPane(new JLabel(s));
 //        scrollPane.setPreferredSize(new Dimension(200,100));
@@ -144,11 +145,15 @@ public class Main {
                 long t223 = System.nanoTime();
                 My.Remove(Se);
                 long t224 = System.nanoTime();
-                String w = JOptionPane.showInputDialog(
+                JOptionPane.showOptionDialog(
                         null,
                         "Time" + (t224 - t223),
-                        "",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        "Remove",
+                        0,
+                        JOptionPane.NO_OPTION,
+                        null,
+                        null,
+                        null);
             }
             else if (result1 == 3) {
                 T = false;
@@ -227,7 +232,7 @@ class BST {
 class Trie{
     List list=new ArrayList();
     BST TrieBST=new BST();
-    public void ReadFile(String path){
+    public void ReadFile(String path) throws IOException {
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader(path));
